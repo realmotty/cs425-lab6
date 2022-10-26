@@ -49,18 +49,96 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         // INSERT YOUR CODE HERE
+        DAOFactory daoFactory = null;
+
+        ServletContext context = request.getServletContext();
+
+        if (context.getAttribute("daoFactory") == null) {
+            System.err.println("*** Creating new DAOFactory ...");
+            daoFactory = new DAOFactory();
+            context.setAttribute("daoFactory", daoFactory);
+        } else {
+            daoFactory = (DAOFactory) context.getAttribute("daoFactory");
+        }
+
+        response.setContentType("application/json; charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
+            int sessionid = Integer.parseInt(request.getParameter("sessionid"));
+            int attendeeid = Integer.parseInt(request.getParameter("attendeeid"));
+
+            RegistrationDAO dao = daoFactory.getRegistrationDAO();
+
+            out.println(dao.create(sessionid, attendeeid));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     }
     
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) {
         // INSERT YOUR CODE HERE
+        DAOFactory daoFactory = null;
+
+        ServletContext context = request.getServletContext();
+
+        if (context.getAttribute("daoFactory") == null) {
+            System.err.println("*** Creating new DAOFactory ...");
+            daoFactory = new DAOFactory();
+            context.setAttribute("daoFactory", daoFactory);
+        } else {
+            daoFactory = (DAOFactory) context.getAttribute("daoFactory");
+        }
+
+        response.setContentType("application/json; charset=UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+
+            int sessionid_old = Integer.parseInt(request.getParameter("sessionid_old"));
+            int attendeeid_old = Integer.parseInt(request.getParameter("attendeeid_old"));
+            int sessionid_updated = Integer.parseInt(request.getParameter("sessionid_updated"));
+            int attendeeid_updated = Integer.parseInt(request.getParameter("attendeeid_updated"));
+
+            RegistrationDAO dao = daoFactory.getRegistrationDAO();
+
+            out.println(dao.update(sessionid_old, attendeeid_old, sessionid_updated, attendeeid_updated));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }  
     }
     
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) {
         // INSERT YOUR CODE HERE
-    }
+     DAOFactory daoFactory = null;
 
+        ServletContext context = request.getServletContext();
+
+        if (context.getAttribute("daoFactory") == null) {
+            System.err.println("*** Creating new DAOFactory ...");
+            daoFactory = new DAOFactory();
+            context.setAttribute("daoFactory", daoFactory);
+        } else {
+            daoFactory = (DAOFactory) context.getAttribute("daoFactory");
+        }
+
+        response.setContentType("application/json; charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
+            int sessionid = Integer.parseInt(request.getParameter("sessionid"));
+            int attendeeid = Integer.parseInt(request.getParameter("attendeeid"));
+
+            RegistrationDAO dao = daoFactory.getRegistrationDAO();
+
+            out.println(dao.delete(attendeeid, sessionid));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public String getServletInfo() {
         return "Registration Servlet";
