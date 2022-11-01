@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  *
- * @author johnc
+ * @author maurz
  */
 public class TrainingSessionsDAO {
     private final DAOFactory daoFactory;
@@ -29,7 +29,6 @@ public class TrainingSessionsDAO {
         this.daoFactory = dao;
     }
 
-    // retrives list of all training sessions
     public String list() {
 
         JSONArray json = new JSONArray();

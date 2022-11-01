@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author johnc
+ * @author maurz
  */
 public class AttendeesServerlet extends HttpServlet {
     @Override
