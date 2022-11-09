@@ -1,37 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Context path="/Lab6">
-    
-    <Resource name="jdbc/db_pool" type="javax.sql.DataSource"
-              driverClassName="com.mysql.cj.jdbc.Driver"
-              username="lab6_user" password="LAB6!user" useSSL="false"
-              auth="Container" autoReconnect="true"
-              validationQuery="SELECT 1" validationQueryTimeout="-1"
-              initialSize="10" logAbandoned="true"
-              maxActive="100" maxIdle="30" maxWait="10000"  
-              removeAbandoned="true" removeAbandonedTimeout="60"
-              testOnBorrow="true" testOnReturn="false" 
-              url="jdbc:mysql://localhost:3306/lab6_fa22_v1?zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;useSSL=false&amp;serverTimezone=America/Chicago&amp;allowPublicKeyRetrieval=true" />
-
-    <Resource name="jdbc/auth" type="javax.sql.DataSource"
-              driverClassName="com.mysql.cj.jdbc.Driver"
-              username="lab6_auth" password="LAB6!auth" useSSL="false"
-              auth="Container" autoReconnect="true"
-              validationQuery="SELECT 1" validationQueryTimeout="-1"
-              initialSize="10" logAbandoned="true"
-              maxActive="100" maxIdle="30" maxWait="10000"
-              removeAbandoned="true" removeAbandonedTimeout="60"
-              testOnBorrow="true" testOnReturn="false"
-              url="jdbc:mysql://localhost:3306/lab6_fa22_v1?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=America/Chicago&amp;allowPublicKeyRetrieval=true" />
-    
-    <Realm dataSourceName="jdbc/auth" localDataSource="true"
-           className="org.apache.catalina.realm.DataSourceRealm"
-           userNameCol="username" userTable="login" userRoleTable="userrole"
-           roleNameCol="rolename" userCredCol="password" >
-        
-        <CredentialHandler algorithm="sha-512"
-                           className="org.apache.catalina.realm.MessageDigestCredentialHandler"/>
-        
-    </Realm>
-    
+  <Resource auth="Container" autoReconnect="true" driverClassName="com.mysql.cj.jdbc.Driver" initialSize="10" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/db_pool" password="LAB6!user" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" testOnReturn="false" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/lab6_fa22_v1?zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;useSSL=false&amp;serverTimezone=America/Chicago&amp;allowPublicKeyRetrieval=true" useSSL="false" username="lab6_user" validationQuery="SELECT 1" validationQueryTimeout="-1"/>
+  <Resource auth="Container" autoReconnect="true" driverClassName="com.mysql.cj.jdbc.Driver" initialSize="10" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/auth" password="LAB6!auth" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" testOnReturn="false" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/lab6_fa22_v1?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=America/Chicago&amp;allowPublicKeyRetrieval=true" useSSL="false" username="lab6_auth" validationQuery="SELECT 1" validationQueryTimeout="-1"/>
+  <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/auth" localDataSource="true" roleNameCol="rolename" userCredCol="password" userNameCol="username" userRoleTable="userrole" userTable="login">
+    <CredentialHandler algorithm="sha-512" className="org.apache.catalina.realm.MessageDigestCredentialHandler"/>
+  </Realm>
 </Context>
