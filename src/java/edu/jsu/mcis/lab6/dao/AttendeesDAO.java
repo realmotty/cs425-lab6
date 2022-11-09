@@ -17,7 +17,19 @@ public class AttendeesDAO {
         AttendeesDAO(DAOFactory dao) {
                 this.daoFactory = dao;
         }
-        
+
+        /*
+         * ------------------------Public Methods---------------------------
+         */
+
+        /**
+         * retrieve the profile information for an attendee (that is, the attendee's
+         * first name, last name, and display name),
+         * STATUS:COMPLETED & TESTED
+         * 
+         * @param attendeeid
+         * @return
+         */
         public String find(int attendeeid) {
                 JSONObject json = new JSONObject();
                 json.put("success", false);
@@ -83,7 +95,23 @@ public class AttendeesDAO {
                 return JSONValue.toJSONString(json);
         }
 
-        
+        /**
+         * Updates information on existing attendee
+         * 
+         * @param attendeeid
+         * @return
+         */
+        /*
+         * public String update(int attendeeid) {
+         * 
+         * }
+         */
+        /**
+         * Adds a new Attendee
+         * 
+         * @param attendee
+         * @return
+         */
         public String create(String firstname, String lastname, String displayname) {
                 JSONObject json = new JSONObject();
 
@@ -132,7 +160,23 @@ public class AttendeesDAO {
                 return JSONValue.toJSONString(json);
         }
 
-       
+        /*
+         * ------------------------Private Methods---------------------------
+         */
+
+        /**
+         * Returns 6 digit registation code based on attendees unique id
+         * Attendees who have been registered for a session should be given a six-digit
+         * registration code,
+         * based on their unique ID, which begins with the letter "R"; for example,
+         * if an attendee is registered whose ID has a value of 76, the registration
+         * number should be "R000076".
+         * 
+         * Helper method for find()
+         * 
+         * @param attendeeid
+         * @return
+         */
 
         private String getRegistrationNumberByAttendeeID(int attendeeid) {
 

@@ -49,7 +49,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        // INSERT YOUR CODE HERE
+        
         DAOFactory daoFactory = null;
 
         ServletContext context = request.getServletContext();

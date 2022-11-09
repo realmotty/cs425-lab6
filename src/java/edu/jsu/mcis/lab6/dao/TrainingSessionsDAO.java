@@ -29,6 +29,7 @@ public class TrainingSessionsDAO {
         this.daoFactory = dao;
     }
 
+    // retrives list of training sessions
     public String list() {
 
         JSONArray json = new JSONArray();
@@ -96,8 +97,8 @@ public class TrainingSessionsDAO {
 
     }
 
-    // retrieves list of all attendess currently registered for the session
-    // specified by id
+    // retrieves list of attendess currently registered for the session
+ 
     public String find(int id) {
 
         JSONArray json = new JSONArray();

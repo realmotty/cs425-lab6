@@ -179,7 +179,7 @@ public class RegistrationDAO {
         String deleteresult = this.delete(sessionid_old, attendeeid_old);
         String createresult = this.create(sessionid_updated, attendeeid_updated);
 
-/*
+
  
 try {
     Connection conn = daoFactory.getConnection();
@@ -220,12 +220,12 @@ try {
             }
             
         }
-        */
+        
         return deleteresult + createresult;
     }
 
     // Cancel a registration for a previously-registered attendee.
-    // DELETE REQUEST
+    // delete request
 
     public String delete(int attendeeid, int sessionid) {
         JSONObject json = new JSONObject();

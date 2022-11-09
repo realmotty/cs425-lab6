@@ -49,8 +49,8 @@ public class DAOFactory {
         return new AttendeesDAO(this);
     }
 
-    public TrainingSessionDAO getTrainingSessionsDAO() {
-        return new TrainingSessionDAO(this);
+    public TrainingSessionsDAO getTrainingSessionsDAO() {
+        return new TrainingSessionsDAO(this);
     }
 
 }
